@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="MoviesApp">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,14 +9,33 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/main.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+
+
 </head>
-<body class="container">
+<body class="container" ng-controller="MoviesCtrl">
 
 	<h1>Movie Data Browser</h1>
 	<p class="lead">Movies released during 2015</p>
 
-  <section class="demo well">
-    <h2>Angular Demo here</h2>
+	<button type="button" ng-click="hideDemo()">{{showDemo ? 'Hide' : 'Show' }} Demo</button>
+  <section class="demo well" ng-if="showDemo">
+    <h2>{{myName}}</h2>
+
+		<p>Message: <input type="text" ng-model="message"></p>
+
+		<p>{{message}}</p>
+
+		<p>Showing {{movies.length}} movies</p>		
+
+		<ul>
+			<li ng-repeat="movie in movies">
+				{{movie.title}} ({{movie.year}})
+			</li>
+		</ul>
+
+		<button type="button" ng-click="sayHello()">Say Hello</button>
   </section>
 
   <form role="form" class="form-inline">
